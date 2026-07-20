@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0e17;
+  color: #e2e8f0;
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(rgba(52, 153, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(52, 153, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #3499ff, #5ab8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow {
+    box-shadow: 0 0 40px rgba(52, 153, 255, 0.15);
+  }
+}
