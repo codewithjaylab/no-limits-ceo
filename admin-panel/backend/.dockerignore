@@ -1,0 +1,36 @@
+# =============================================================================
+# .dockerignore - CEO Dashboard Backend
+# =============================================================================
+
+# Build artifacts
+target/
+*.jar
+*.war
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Maven wrapper (not needed inside Docker)
+mvnw
+mvnw.cmd
+
+# Docs (not needed in the image)
+*.md
+
+# Logs
+*.log

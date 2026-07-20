@@ -1,0 +1,41 @@
+# =============================================================================
+# compose.yaml - CEO Dashboard Backend + PostgreSQL
+# Usage: docker compose up --build
+# =============================================================================
+
+services:
+
+  db:
+    image: postgres:15-alpine
+    container_name: nolimits-ceo-db
+    environment:
+      POSTGRES_DB: nolimits_ceo
+      POSTGRES_USER: nolimits
+      POSTGRES_PASSWORD: changeme
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nolimits -d nolimits_ceo"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: nolimits-ceo-api
+    environment:
+      DB_USERNAME: nolimits
+      DB_PASSWORD: changeme
+      DB_URL: jdbc:postgresql://db:5432/nolimits_ceo
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:
