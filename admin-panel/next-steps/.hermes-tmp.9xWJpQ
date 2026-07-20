@@ -1,0 +1,34 @@
+# CEO Dashboard — Roadmap y Next Steps
+
+## Fase 1 — Conectar frontend con backend (inmediato)
+
+- [ ] Arrancar el frontend (`npm run dev`) y verificar que trae datos reales del backend
+- [ ] Crear `.env.local` en frontend si el backend corre en otro puerto:
+      NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1/dashboard
+
+## Fase 2 — Features faltantes del spec
+
+- [ ] **Autenticación JWT** — Spring Security con JWT-based RBAC
+      (AuthController, JwtProvider, SecurityFilterChain)
+- [ ] **SSE / WebSocket** — push en tiempo real para KPIs y notificaciones urgentes
+- [ ] **CRUD endpoints** — POST/PUT/DELETE para tareas, eventos y mensajes
+      (hoy solo GET)
+- [ ] **Mark-as-read** — PUT /api/v1/dashboard/notifications/urgent/{id}/read
+- [ ] **Date-range queries** — Extender agenda/KPI endpoints con startDate/endDate
+
+## Fase 3 — Calidad y Developer Experience
+
+- [ ] Error Boundaries globales en React
+- [ ] Skeleton loaders (el spec lo pide explícitamente)
+- [ ] Swagger / OpenAPI docs (springdoc-openapi-starter-webmvc-ui)
+- [ ] Spring Actuator (health check para el HEALTHCHECK de Docker)
+- [ ] Audit logging (@CreatedDate / @LastModifiedDate via Spring JPA)
+- [ ] Tests de integración backend (@SpringBootTest)
+- [ ] Tests de componentes frontend (Vitest + Testing Library)
+
+## Fase 4 — Producción
+
+- [ ] Pin SHAs de imágenes Docker (maven:, eclipse-temurin:, postgres:)
+- [ ] CI/CD pipeline (GitHub Actions: build, test, push image)
+- [ ] Despliegue (Railway, Fly.io, VPS, o el que prefieras)
+- [ ] Multi-platform build (DOCKER_DEFAULT_PLATFORM=linux/amd64)
